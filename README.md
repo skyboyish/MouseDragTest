@@ -248,13 +248,13 @@ dist = sqrt((mouse_x - dot_x)^2 + (mouse_y - dot_y)^2)
 
 按 **Esc** 关闭窗口。
 
-### 3.3 动态渐变背景原理
+### 3.3 动态渐变背景原理（额外功能）
 
 - 使用 `QtGui.QConicalGradient(center, angle)` 创建锥形渐变，按 `gradient_colors`（颜色+位置停靠点列表）设置颜色。
 - 一个 `QTimer` 以 `gradient_interval` 毫秒为周期，每帧把 `gradient_angle` 增加 `gradient_step` 度并 `update()` 重绘，形成旋转的彩虹背景。
 - 在 `paintEvent` 中绘制，同时关闭 `setAutoFillBackground` 避免纯色覆盖渐变。
 
-### 3.4 时间显示原理
+### 3.4 时间显示原理（额外功能）
 
 - 用 Windows API `GetTickCount64`（`ctypes.windll.kernel32`，声明返回 64 位无符号）获取系统已运行毫秒数，换算成「X天X小时」。相比 `time.clock`，可正确跨过 24.8 天（32 位溢出）边界。
 - 当前时间用 `time.strftime` 格式化。
